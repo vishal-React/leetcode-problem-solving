@@ -36,7 +36,7 @@ var minWindow = function (s, t) {
             // when window is valid we have to shrink that window untill it become invalid and we have to find next smallest valid window. before remove left char we have to increase required if we remove valid char from currwindow with correct freq
             if (
                 objTargetFreq[s[left]] &&
-                objTargetFreq[s[left]] >= currWindowFreq[s[left]]
+                objTargetFreq[s[left]] === currWindowFreq[s[left]]
             ) {
                 required++;
             }
