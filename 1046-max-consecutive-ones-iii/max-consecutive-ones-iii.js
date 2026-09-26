@@ -6,19 +6,17 @@
 var longestOnes = function (nums, k) {
     let left = 0;
     let maxWindowSize = 0;
-    const currWindowFreq = {};
+    let zeroCount = 0;
 
     for (let right = 0; right < nums.length; right++) {
-        currWindowFreq[nums[right]] = (currWindowFreq[nums[right]] || 0) + 1;
-
-        let currWindowSize = right - left + 1;
-        let replaceableZeros = currWindowSize - (currWindowFreq[1] || 0);
-
-        while (replaceableZeros > k) {
-            currWindowFreq[nums[left]]--;
+        if (nums[right] === 0) {
+            zeroCount++;
+        }
+        while (zeroCount > k) {
+            if (nums[left] === 0) {
+                zeroCount--;
+            }
             left++;
-            currWindowSize = right - left + 1;
-            replaceableZeros = currWindowSize - (currWindowFreq[1] || 0);
         }
         maxWindowSize = Math.max(maxWindowSize, right - left + 1);
     }
