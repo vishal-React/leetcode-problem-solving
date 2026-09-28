@@ -15,7 +15,7 @@ var maxSlidingWindow = function (nums, k) {
         deque.push(right);
 
         if (right - left + 1 > k) {
-            if (left === deque[0]) {
+            if (nums[left] === nums[deque[0]]) {
                 deque.shift();
             }
             left++;
@@ -26,5 +26,6 @@ var maxSlidingWindow = function (nums, k) {
             res.push(nums[deque[0]]);
         }
     }
+
     return res
 };
