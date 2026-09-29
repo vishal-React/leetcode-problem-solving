@@ -5,18 +5,13 @@
  */
 var isAnagram = function (s, t) {
     if (s.length !== t.length) return false;
-    const sFreq = {};
-    const tFreq = {};
+    const obj = {};
 
     for (let i = 0; i < s.length; i++) {
-        sFreq[s[i]] = (sFreq[s[i]] || 0) + 1;
-        tFreq[t[i]] = (tFreq[t[i]] || 0) + 1;
+        obj[s[i]] = (obj[s[i]] || 0) + 1;
+        obj[t[i]] = (obj[t[i]] || 0) - 1;
+        if (obj[s[i]] === 0) delete obj[s[i]];
+        if (obj[t[i]] === 0) delete obj[t[i]];
     }
-
-    for (const key in sFreq) {
-        if (sFreq[key] !== tFreq[key]) {
-            return false;
-        }
-    }
-    return true;
+    return Object.keys(obj).length === 0;
 };
