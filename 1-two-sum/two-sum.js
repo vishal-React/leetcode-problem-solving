@@ -4,6 +4,7 @@
  * @return {number[]}
  */
 var twoSum = function (nums, target) {
+    // hashmap
     const neededObj = {};
     for (let i = 0; i < nums.length; i++) {
         const needed = target - nums[i];
