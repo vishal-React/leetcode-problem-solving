@@ -3,6 +3,7 @@
  * @return {string[][]}
  */
 var groupAnagrams = function (strs) {
+    // by sorting 
     const obj = {};
 
     for (let i = 0; i < strs.length; i++) {
