@@ -4,19 +4,19 @@
  * @return {character}
  */
 var findTheDifference = function (s, t) {
-    // count both freq and than copmare
-    const objS = {};
-    const objT = {};
+    // add and subtract the char count
+    const obj = {};
 
-    for (const char of s) {
-        objS[char] = (objS[char] || 0) + 1;
+    // this loop for add and subtract the char add s and remove t for get -1 in end what ever letter are missing
+    for (let i = 0; i < t.length; i++) {
+        if (s[i]) {
+            obj[s[i]] = (obj[s[i]] || 0) + 1;
+        }
+        obj[t[i]] = (obj[t[i]] || 0) - 1;
     }
 
-    for (const char of t) {
-        objT[char] = (objT[char] || 0) + 1;
-    }
-
-    for (const key of t) {
-        if (objS[key] !== objT[key]) return key;
+    // find the -1 key
+    for (const key in obj) {
+        if (obj[key] === -1) return key;
     }
 };
