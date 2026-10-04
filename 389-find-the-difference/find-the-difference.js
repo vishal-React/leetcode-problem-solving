@@ -4,6 +4,7 @@
  * @return {character}
  */
 var findTheDifference = function (s, t) {
+    // count both freq and than copmare
     const objS = {};
     const objT = {};
 
