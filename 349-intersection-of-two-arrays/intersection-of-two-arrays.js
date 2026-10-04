@@ -5,13 +5,13 @@
  */
 var intersection = function (nums1, nums2) {
     const set = new Set(nums2); // unique nums2
+    const intersectionSet = new Set();
 
-    const intersectionObj = {};
     for (const num of nums1) {
         if (set.has(num)) {
-            // check that nums1 num are in nums2 set or not if yes add in obj
-            intersectionObj[num] = num;
+            // check that nums1 num are in nums2 set or not if yes add in intersectionSet
+            intersectionSet.add(num);
         }
     }
-    return Object.values(intersectionObj);
+    return [...intersectionSet]
 };
