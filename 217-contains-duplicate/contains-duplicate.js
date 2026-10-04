@@ -3,12 +3,14 @@
  * @return {boolean}
  */
 var containsDuplicate = function (nums) {
-    const obj = {};
+    const uniqueNums = new Set();
+
     for (const num of nums) {
-        if (obj[num] !== undefined) {
+        if (uniqueNums.has(num)) {
             return true;
         }
-        obj[num] = (obj[num] || 0) + 1;
+        uniqueNums.add(num);
     }
     return false;
+
 };
