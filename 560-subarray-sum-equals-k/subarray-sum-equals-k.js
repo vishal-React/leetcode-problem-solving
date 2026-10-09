@@ -4,18 +4,17 @@
  * @return {number}
  */
 var subarraySum = function (nums, k) {
+    // prefixSum + freq
+    const seen = { 0: 1 };
     let count = 0;
-    for (let i = 0; i < nums.length; i++) {
-        let sum = 0;
-        for (let j = i; j < nums.length; j++) {
-            sum += nums[j];
-            if (sum === k) {
-                count++;
-            }
-            // if (sum > k) {
-            //     break;
-            // }
+    let sum = 0;
+    for (const num of nums) {
+        sum += num;
+        const needed = sum - k;
+        if (seen[needed]) {
+            count += seen[needed];
         }
+        seen[sum] = (seen[sum] || 0) + 1;
     }
     return count
 };
