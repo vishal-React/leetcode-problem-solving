@@ -3,9 +3,19 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var sortColors = function (nums) {
-    // the ideal logic will be :
-    // we will ignore 1 and we focus on 0 and 2 why? beacuse while iteration if we get 2 as we know that 2 will always in end so we swap to last as right pointer and decrease the right pointer for next 2 place on right and same goes with 0 if we get 0 we know that 0 will always in start so we swap to left and we increase left pointer for next 0 place on left correct.
-    // until we swap 0 and 2 in corrcet position we dont move current pointer which is mid = 1 if we got mid as a 1 than we ignore and move mid pointer 
+    // Ideal logic:
+    // We focus on 0 and 2, while 1 is already in the correct middle section.
+
+    // If nums[mid] === 0, we swap it with nums[left] because 0 belongs at the start.
+    // Then, we increment both left and mid to move to the next positions.
+
+    // If nums[mid] === 2, we swap it with nums[right] because 2 belongs at the end.
+    // Then, we decrement right to make space for the next 2.
+    // We do not increment mid because the swapped value from right is not yet processed.
+
+    // If nums[mid] === 1, we ignore it and increment mid because 1 belongs in the middle.
+
+    // We continue until mid > right, meaning all elements are in their correct sections.
     let left = 0;
     let mid = 0;
     let right = nums.length - 1;
