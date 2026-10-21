@@ -7,16 +7,15 @@ var sortedSquares = function (nums) {
     let right = nums.length - 1;
     let arr = [];
 
-    while (left <= right) {
+    for (let position = right; position >= 0; position--) {
         const leftSquare = nums[left] * nums[left];
         const rightSquare = nums[right] * nums[right];
-        console.log("leftSquare rightSquare", leftSquare, rightSquare);
 
         if (leftSquare < rightSquare) {
-            arr.unshift(rightSquare);
+            arr[position] = rightSquare;
             right--;
         } else {
-            arr.unshift(leftSquare);
+            arr[position] = leftSquare;
             left++;
         }
     }
