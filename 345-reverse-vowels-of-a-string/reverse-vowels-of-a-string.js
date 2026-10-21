@@ -13,10 +13,8 @@ var reverseVowels = function (s) {
             if (vowelsSet.has(arr[right])) {
                 [arr[left], arr[right]] = [arr[right], arr[left]];
                 left++;
-                right--;
-            } else {
-                right--;
             }
+            right--;
         } else {
             left++;
         }
